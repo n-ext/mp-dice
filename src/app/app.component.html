@@ -1,8 +1,8 @@
-<header>Dzień liczby PI</header>
+<!-- <header>Dzień liczby PI</header> -->
 <main>
   <form [formGroup]="diceForm" (submit)="onFormSubmit()">
-    <h2 class="mat-headline-4">Pierwsza seria rzutów</h2>
-    <mat-form-field appearance="outline" color="primary">
+    <h2 class="mat-headline-4 first-h">Pierwsza seria rzutów</h2>
+    <mat-form-field appearance="outline" color="primary" class="first-k12">
       <mat-label>Wynik rzutu K12</mat-label>
       <input
         matInput
@@ -13,7 +13,7 @@
       />
       <mat-error>Wartość powinna być z zakresu 1-12</mat-error>
     </mat-form-field>
-    <mat-form-field appearance="outline" color="primary">
+    <mat-form-field appearance="outline" color="primary" class="first-k10">
       <mat-label>Wynik rzutu K10</mat-label>
       <input
         matInput
@@ -24,8 +24,8 @@
       />
       <mat-error>Wartość powinna być z zakresu 0-9</mat-error>
     </mat-form-field>
-    <h2 class="mat-headline-4">Druga seria rzutów</h2>
-    <mat-form-field appearance="outline" color="primary">
+    <h2 class="mat-headline-4 second-h">Druga seria rzutów</h2>
+    <mat-form-field appearance="outline" color="primary" class="second-k12">
       <mat-label>Wynik rzutu K12</mat-label>
       <input
         matInput
@@ -36,7 +36,7 @@
       />
       <mat-error>Wartość powinna być z zakresu 1-12</mat-error>
     </mat-form-field>
-    <mat-form-field appearance="outline" color="primary">
+    <mat-form-field appearance="outline" color="primary" class="second-k10">
       <mat-label>Wynik rzutu K10</mat-label>
       <input
         matInput
@@ -56,6 +56,12 @@
     <h1>Liczba wszystkich rzutów: {{ allRolls }}</h1>
   </div>
   <div class="results-container">
-    <h1 class="pi">&pi; w przybliżeniu: {{ pi }}</h1>
+    <h1 class="pi">
+      <span [style.fontSize]="'10rem'">&pi;</span
+      ><span>w przybliżeniu: {{ pi }}</span>
+    </h1>
   </div>
 </main>
+<footer>
+  <img src="/assets/knm-logo.png" />
+</footer>
