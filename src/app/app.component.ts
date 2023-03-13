@@ -18,7 +18,7 @@ export class AppComponent {
 
   allRolls: number = 0;
   positiveRolls: number = 0;
-  pi: number = 1 / 3;
+  pi: number = 0;
 
   constructor(private formBuilder: FormBuilder) {}
 
