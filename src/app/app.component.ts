@@ -7,6 +7,8 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  showControl: boolean = false;
+
   title = 'mp-dice';
 
   diceForm = this.formBuilder.group({
@@ -14,6 +16,11 @@ export class AppComponent {
     dice12: ['', [Validators.required, Validators.min(0), Validators.max(9)]],
     dice21: ['', [Validators.required, Validators.min(1), Validators.max(12)]],
     dice22: ['', [Validators.required, Validators.min(0), Validators.max(9)]],
+  });
+
+  controlForm = this.formBuilder.group({
+    allRolls: ['', [Validators.required, Validators.min(0)]],
+    positiveRolls: ['', [Validators.required, Validators.min(0)]],
   });
 
   allRolls: number = 0;
@@ -34,7 +41,7 @@ export class AppComponent {
     return true;
   }
 
-  onFormSubmit() {
+  onDiceFormSubmit() {
     const dice11 = +(this.diceForm.get('dice11')?.value || 1);
     const dice12 = +(this.diceForm.get('dice12')?.value || 1);
     const dice21 = +(this.diceForm.get('dice21')?.value || 1);
@@ -50,5 +57,15 @@ export class AppComponent {
     if (this.positiveRolls !== 0) {
       this.pi = Math.sqrt((6 * this.allRolls) / this.positiveRolls);
     }
+  }
+
+  onControlFormSubmit() {
+    const allRolls = +(this.controlForm.get('allRolls')?.value || 0);
+    const positiveRolls = +(this.controlForm.get('positiveRolls')?.value || 0);
+    this.allRolls = allRolls;
+    this.positiveRolls = positiveRolls;
+    if (this.positiveRolls !== 0)
+      this.pi = Math.sqrt((6 * this.allRolls) / this.positiveRolls);
+    this.showControl = false;
   }
 }

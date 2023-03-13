@@ -1,6 +1,6 @@
 <!-- <header>Dzień liczby PI</header> -->
 <main>
-  <form [formGroup]="diceForm" (submit)="onFormSubmit()">
+  <form [formGroup]="diceForm" (submit)="onDiceFormSubmit()" class="dice-form">
     <h2 class="mat-headline-4 first-h">Pierwsza seria rzutów</h2>
     <mat-form-field appearance="outline" color="primary" class="first-k12">
       <mat-label>Wynik rzutu K12</mat-label>
@@ -63,5 +63,40 @@
   </div>
 </main>
 <footer>
-  <img src="assets/knm-logo.png" />
+  <form
+    class="admin-control"
+    [formGroup]="controlForm"
+    (submit)="onControlFormSubmit()"
+    *ngIf="showControl"
+  >
+    <h2 class="mat-headline-4">Wpisz nowe dane</h2>
+    <mat-form-field
+      appearance="outline"
+      color="primary"
+      [style.width]="'300px'"
+    >
+      <mat-label>Wszystkie rzuty</mat-label>
+      <input
+        matInput
+        type="text"
+        mask="99999999999999999999999"
+        formControlName="allRolls"
+        autocomplete="off"
+      />
+      <mat-error>Wartość powinna być większa od 0</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="primary">
+      <mat-label>Rzuty względnie pierwsze</mat-label>
+      <input
+        matInput
+        type="text"
+        mask="99999999999999999999999"
+        formControlName="positiveRolls"
+        autocomplete="off"
+      />
+      <mat-error>Wartość powinna być większa od 0</mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">Ustaw</button>
+  </form>
+  <img src="assets/knm-logo.png" (click)="showControl = !showControl" />
 </footer>
